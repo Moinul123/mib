@@ -150,8 +150,9 @@ async def call_message(request):
 
 def main():
     app = web.Application(client_max_size=1024**3)    
+    port = int(os.environ.get('PORT', 8080))  # Default port is 8080 if PORT environment variable is not set
     app.router.add_route('POST', '/message', call_message)    
-    web.run_app(app, port=os.environ.get('PORT', ''))
+    web.run_app(app, port=port)
 
 
 if __name__ == "__main__":
